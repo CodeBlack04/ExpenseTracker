@@ -1,0 +1,56 @@
+{% load static %}
+
+{% block load %}{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block head %} {% endblock %}
+    <title>{% block title %}{% endblock %} | Tracker</title>
+</head>
+<body class="h-screen bg-gray-600 bg-teal-950 flex">
+
+    <nav id="navbar" class="w-1/6 h-full py-5 px-5 rounded-xl bg-emerald-950">
+
+        <div id="profile" class="mb-5 p-4 rounded-xl flex justify-even align-items gap-5 bg-emerald-800 border border-black">
+                <img src="{% static '/images/user_photo.jpg' %}" alt="profile-photo" class="h-14 rounded-full border border-black">
+                <div>
+                    <h1 class="text-xl text-black font-bold">{{request.user.username}}</h1>
+                    <a href="{% url 'core:home' %}"><p class="text-xl font-semibold">ExpTracker</p></a>
+                </div>
+        </div>
+
+        <div id="catalog" class="p-4 rounded-xl bg-emerald-800 border border-black">
+            <ul>
+                <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:dashboard' %}">Dashboard</a></li>
+                <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:new' %}">New Transaction</a></li>
+                <li class="py-4 px-3 text-xl font-semibold"><a href="#">Analytics</a></li>
+                <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:list' %}">Transaction List</a></li>
+                <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:incomes' %}">Incomes</a></li>
+                <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:expenses' %}">Expenses</a></li>
+            </ul>
+        </div>
+
+        <div class="p-4 absolute bottom-4">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'core:logout' %}" class="px-6 py-3 text-lg font-semibold bg-red-500 text-stale-200 rounded-xl hover:bg-red-600 border border-black">Logout</a>
+            {% else %}
+            <a href="{% url 'core:login' %}" class="px-6 py-3 text-lg font-semibold bg-emerald-800 text-stale-200 rounded-xl hover:bg-emerald-900 border border-black">LogIn</a>
+            <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-emerald-800 text-stale-200 rounded-xl hover:bg-emerald-900 border border-black">SignUp</a>
+            {% endif %}
+
+        </div>
+
+    </nav>
+
+    <div class="w-5/6 h-full mx-4 rounded-xl flex flex-col justify-normal items-center">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+</body>
+</html>
