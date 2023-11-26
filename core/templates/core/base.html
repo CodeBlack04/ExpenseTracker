@@ -13,7 +13,7 @@
 </head>
 <body class="h-screen bg-gray-600 bg-teal-950 flex">
 
-    <nav id="navbar" class="w-1/6 h-full py-5 px-5 rounded-xl bg-emerald-950">
+    <nav id="navbar" class="h-full hidden xl:block xl:w-[350px] h-full py-5 px-5 rounded-xl bg-emerald-950">
 
         <div id="profile" class="mb-5 p-4 rounded-xl flex justify-even align-items gap-5 bg-emerald-800 border border-black">
                 <img src="{% static '/images/user_photo.jpg' %}" alt="profile-photo" class="h-14 rounded-full border border-black">
@@ -23,12 +23,12 @@
                 </div>
         </div>
 
-        <div id="catalog" class="p-4 rounded-xl bg-emerald-800 border border-black">
+        <div id="catalog" class="whitespace-nowrap p-4 rounded-xl bg-emerald-800 border border-black">
             <ul>
                 <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:dashboard' %}">Dashboard</a></li>
                 <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:new' %}">New Transaction</a></li>
                 <li class="py-4 px-3 text-xl font-semibold"><a href="#">Analytics</a></li>
-                <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:list' %}">Transaction List</a></li>
+                <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:list' %}">All Transactions</a></li>
                 <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:incomes' %}">Incomes</a></li>
                 <li class="py-4 px-3 text-xl font-semibold"><a href="{% url 'transaction:expenses' %}">Expenses</a></li>
             </ul>
@@ -46,7 +46,7 @@
 
     </nav>
 
-    <div class="w-5/6 h-full mx-4 rounded-xl flex flex-col justify-normal items-center">
+    <div class="w-full h-max xl:w-10/12 mx-auto my-auto  p-4 rounded-xl">
         {% block content %}
 
         {% endblock %}

@@ -6,9 +6,9 @@
 
 
 {% block content %}
-<div id="dashboard" class="w-full h-full rounded-xl flex justify-between items-center">
+<div id="dashboard" class="w-full flex flex-col lg:flex-row items-center">
 
-    <div id="summary" class="w-3/5 rounded-xl flex flex-col gap-4">
+    <div id="summary" class="w-full md:w-4/5 lg:w-3/5 rounded-xl flex flex-col gap-4">
 
         <div id="graph" class="w-full h-96 p-4 rounded-xl bg-teal-900">
 
@@ -33,7 +33,7 @@
 
     </div>
 
-    <div id="details" class="w-2/5 ml-4 rounded-xl flex flex-col gap-6">
+    <div id="details" class="w-full md:w-4/5 lg:w-2/5 m-4 mx-auto rounded-xl flex flex-col gap-6">
 
         <div id="recent_history" class="p-4 rounded-xl text-emerald-600">
             <h1 class="text-center pb-5 text-3xl font-semibold">Recent History</h1>
@@ -42,9 +42,9 @@
 
                 {% for transaction in recent_history %}
                 <div class="flex justify-between px-3 py-2 rounded-xl bg-emerald-800 text-lg font-semibold {% if transaction.amount > 0 %} text-green-700 {% else %} text-rose-700 {% endif %}">
-                    <div class="w-1/3 text-center inline-block">{{transaction.name}}</div>
-                    <div class="w-1/3 text-center inline-block">{{transaction.category}}</div>
-                    <div class="w-1/3 text-center inline-block">{% if transaction.amount > 0 %} +{{transaction.amount|intcomma}} {% else %} {{transaction.amount|intcomma}} {% endif %}</div>
+                    <div class="w-1/3 my-auto text-center">{{transaction.name}}</div>
+                    <div class="w-1/3 my-auto text-center">{{transaction.category}}</div>
+                    <div class="w-1/3 my-auto text-center">{% if transaction.amount > 0 %} +{{transaction.amount|intcomma}} {% else %} {{transaction.amount|intcomma}} {% endif %}</div>
                 </div>
                 {% endfor %}
 
