@@ -7,7 +7,7 @@ input_classes = 'w-full py-4 px-6 rounded-xl bg-teal-100 text-black'
 class NewTransactionForm(forms.ModelForm):
     class Meta:
         model = Transaction
-        fields = ('name', 'notes', 'category', 'new_category', 'amount')
+        fields = ('name', 'notes', 'category', 'new_category','type' , 'amount')
         widgets = {
             'name': forms.TextInput(attrs={
                 'placeholder': 'Name of your transaction',
@@ -26,6 +26,10 @@ class NewTransactionForm(forms.ModelForm):
 
             'new_category': forms.TextInput(attrs={
                 'placeholder': 'Enter a new category',
+                'class': input_classes,
+            }),
+
+            'type': forms.Select(attrs={
                 'class': input_classes,
             }),
 

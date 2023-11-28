@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 # Login settings
 
 LOGIN_URL = 'core:login'
-LOGIN_REDIRECT_URL = '/transactions/'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Dhaka'
 
 USE_I18N = True
 
