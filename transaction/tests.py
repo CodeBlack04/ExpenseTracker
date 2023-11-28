@@ -164,7 +164,7 @@ class TransactionViewsTest(TestCase):
             created_by = self.user
         )
 
-        transaction3 = Transaction.objects.create(
+        Transaction.objects.create(
             name = 'Home',
             category = category2,
             type = TransactionTypes.EXPENSE,

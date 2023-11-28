@@ -23,7 +23,5 @@ def Signup(request):
         'title': 'SignUp'
     })
 
-@login_required
-def home(request):
-    return render(request, 'core/home.html')
+
 
