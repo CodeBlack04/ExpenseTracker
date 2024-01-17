@@ -38,3 +38,13 @@ class NewTransactionForm(forms.ModelForm):
                 'class': input_classes,
             }),
         }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        category = cleaned_data.get('category')
+        new_category = cleaned_data.get('new_category')
+
+        if not category and not new_category:
+            raise forms.ValidationError("Either 'category' or 'new_category' must be filled.")
+        
+        return cleaned_data
